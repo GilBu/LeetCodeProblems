@@ -15,7 +15,7 @@ var threeSum = function(nums) {
             if(nums[i] + nums[j] + nums[k] === 0){
                 result.push([nums[i], nums[j], nums[k]])
                 j++
-                k++
+                k--
                 while (j < k && nums[j] == nums[j-1]) j++
                 while (j < k && nums[k] == nums[k+1]) k--
             } else if(nums[i] + nums[j] + nums[k] > 0) {
