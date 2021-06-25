@@ -4,15 +4,19 @@
  * @return {boolean}
  */
 var wordBreak = function(s, wordDict) {
-    const words = new Set(wordDict);
-    const wordLens = new Set(wordDict.map((word) => word.length))
-    const starts = new Set([0])
-    for (let start of starts) {
-        for (let len of wordLens) {
-            if (words.has(s.slice(start, start + len))) {
-                starts.add(start + len)
+    if (wordDict == null || wordDict.length === 0) return false
+    const set = new Set(wordDict)
+    const dp = Array(s.length + 1).fill(false)
+    dp[0] = true
+
+    for (let end = 1; end <= s.length; end++) {
+        for (let start = 0; start < end; start++) {
+            const word = s.slice(start, end)
+            if (dp[start] === true && set.has(word)) {
+                dp[end] = true
+                break
             }
         }
     }
-    return starts.has(s.length)
+    return dp[s.length]
 };
