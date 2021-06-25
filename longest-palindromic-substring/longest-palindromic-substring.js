@@ -1,25 +1,32 @@
-/**
- * @param {string} s
- * @return {string}
- */
 var longestPalindrome = function(s) {
-    let start = 0, end = 0
-    for(let i = 0; i < s.length; i++){
-        let oddLen = fromCenter(s, i, i)
-        let evenLen = fromCenter(s, i, i + 1)
-        let len = Math.max(oddLen, evenLen)
-        if(len > end - start){
-            start = i - Math.floor((len - 1) / 2)
-            end = i + Math.floor(len / 2)
+    
+	if(s.length <= 1) return s;
+	
+	// construct a 2D array
+    const dp = [...new Array(s.length + 1)].map(_ => new Array(s.length + 1).fill(false));
+	
+    let lps = '';
+    
+	// base case for one character
+    for(let i = 0; i < s.length; i++) {
+        dp[i][i] = true;
+        lps = s[i];
+    }
+    
+	// base case for two characters
+    for(let i = 0; i < s.length; i++) {
+        if(s[i] === s[i + 1]) dp[i][i+1] = true;
+        if(dp[i][i+1]) lps = s.substring(i, i + 2);
+    }
+
+    // expand to three or more characters
+    for(let i = s.length - 1; i >= 0; i--) {
+        for(let j = i + 2; j < s.length; j++) {
+            dp[i][j] = dp[i+1][j-1] && s[i] === s[j];
+            if(dp[i][j]) lps = lps.length < (j - i + 1) ? s.substring(i, j + 1) : lps;
         }
     }
-    return s.slice(start, end + 1)
-};
-
-var fromCenter = function(s, left, right){
-    while(left >= 0 && right < s.length && s[left] == s[right]){
-        left--
-        right++
-    }
-    return right - left - 1
+    
+    return lps;
 }
+
