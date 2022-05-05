@@ -3,7 +3,6 @@
  * @return {boolean}
  */
 var validPalindrome = function(s) {
-    let hasError = false
     let i = 0
     let j = s.length - 1
     while (i < j) {
