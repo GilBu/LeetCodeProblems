@@ -9,9 +9,9 @@ var subarraySum = function(nums, k) {
     map.set(0, 1)
     for(let i = 0; i < nums.length; i++) {
         sum += nums[i]
-        if(map.has(sum - k)) count += map.get(sum - k)
-        if(map.has(sum)) map.set(sum, map.get(sum) + 1)
-        else map.set(sum, 1)
+        const curr = map.get(sum - k) || 0
+        map.set(sum, (map.get(sum) || 0) + 1)
+        count += curr
     }
     return count
 };
