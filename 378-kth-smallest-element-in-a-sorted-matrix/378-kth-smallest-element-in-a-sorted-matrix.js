@@ -12,7 +12,6 @@ var kthSmallest = function(matrix, k) {
             else sorted.splice(idx, 0, matrix[i][j])
         }
     }
-    console.log(sorted)
     return sorted[k - 1]
 };
 
