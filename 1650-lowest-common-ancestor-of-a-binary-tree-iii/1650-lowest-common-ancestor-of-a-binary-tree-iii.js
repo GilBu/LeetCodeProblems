@@ -13,8 +13,6 @@
  * @return {Node}
  */
 var lowestCommonAncestor = function(p, q) {
-    // if(isDescendant(p, value)) return p.value
-    // if(isDescendant(q, value)) return q.value
     let currP = p
     let currQ = q
     let ancestors = new Set()
@@ -28,15 +26,3 @@ var lowestCommonAncestor = function(p, q) {
         currQ = currQ.parent
     }
 };
-
-var isDescendant = function(node, value) {
-    if(node.val === null){
-        return false
-    } else if ( node.val === value) {
-        return true
-    } else {
-        isDescendant(node.left, value)
-        isDescendant(node.right, value)
-    }
-    
-}
