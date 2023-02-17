@@ -17,7 +17,6 @@ var addBinary = function(a, b) {
             carry++
         }
         lengthB--
-        console.log(carry)
         if(carry % 2 === 1) {
             result = result.concat('1')
         } else {
@@ -25,16 +24,8 @@ var addBinary = function(a, b) {
         }
         
         carry = Math.floor(carry / 2)
-        console.log(result, carry)
     }
     
     if (carry === 1) result = result.concat('1')
     return result.split('').reverse().join('')
 };
-
-/*
-  111 1 1
-  110 1 0
-  100 0 1
-  000 0 0
-  */
