@@ -13,7 +13,6 @@ var backspaceCompare = function(s, t) {
                 ans.pop()
             }
         }
-        console.log(ans)
         return ans.join('')
     }
     return build(s) === build(t)
