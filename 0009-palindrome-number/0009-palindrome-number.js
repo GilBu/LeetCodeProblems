@@ -11,7 +11,7 @@ var isPalindrome = function(x) {
         flippedNum = flippedNum * 10 + x % 10
         x = Math.floor(x / 10)
     }
-    console.log(flippedNum, x)
+    
     return flippedNum === x || Math.floor(flippedNum/10) === x
 };
 // var isPalindrome = function(x) {
