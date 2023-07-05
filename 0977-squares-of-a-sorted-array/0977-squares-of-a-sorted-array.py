@@ -11,5 +11,6 @@ class Solution:
             else:
                 square = nums[left]
                 left += 1
+            # using num * num is faster than num ** 2 and pow(num, 2)
             result[i] = square * square
         return result
