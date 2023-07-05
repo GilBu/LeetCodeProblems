@@ -11,5 +11,5 @@ class Solution:
             else:
                 square = nums[left]
                 left += 1
-            result[i] = pow(square, 2)
+            result[i] = square * square
         return result
